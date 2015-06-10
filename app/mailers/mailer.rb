@@ -25,7 +25,7 @@ class Mailer < ActionMailer::Base
                    'Error-Id' => @notice.err_id
 
     mail :to      => @app.notification_recipients,
-         :subject => "#{count}[#{@app.name}][#{@notice.environment_name}] #{@notice.message.truncate(50)}"
+         :subject => "#{count}[#{@app.name}][#{@notice.environment_name}]"
   end
 
   def deploy_notification(deploy)
@@ -56,7 +56,7 @@ class Mailer < ActionMailer::Base
                    'Comment-Author' => @user.name
 
     mail :to      => recipients,
-         :subject => "#{@user.name} commented on [#{@app.name}][#{@notice.environment_name}] #{@notice.message.truncate(50)}"
+         :subject => "#{@user.name} commented on [#{@app.name}][#{@notice.environment_name}]"
   end
 
   private
