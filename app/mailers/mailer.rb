@@ -18,8 +18,9 @@ class Mailer < ActionMailer::Base
     @app      = notice.app
 
     count = @notice.similar_count
-    count = count > 1 ? "(#{count}) " : ""
     error = "error".pluralize(count)
+    count = count > 1 ? "(#{count}) " : ""
+
 
     errbit_headers 'App' => @app.name,
                    'Environment' => @notice.environment_name,
