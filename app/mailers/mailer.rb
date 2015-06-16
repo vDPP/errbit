@@ -25,7 +25,7 @@ class Mailer < ActionMailer::Base
                    'Error-Id' => @notice.err_id
 
     mail :to      => @app.notification_recipients,
-         :subject => "#{count}[#{@app.name}][#{@notice.environment_name}]"
+         :subject => "#{count} errors report in  [#{@notice.environment_name}]"
   end
 
   def deploy_notification(deploy)
