@@ -19,13 +19,14 @@ class Mailer < ActionMailer::Base
 
     count = @notice.similar_count
     count = count > 1 ? "(#{count}) " : ""
+    error = "error".pluralize(count)
 
     errbit_headers 'App' => @app.name,
                    'Environment' => @notice.environment_name,
                    'Error-Id' => @notice.err_id
 
     mail :to      => @app.notification_recipients,
-         :subject => "#{count} Real Appeal errors reported in  [#{@notice.environment_name}]"
+         :subject => "#{count} #{@app.name} #{@notice.environment_name} #{@notice.class_name} #{error}"
   end
 
   def deploy_notification(deploy)
