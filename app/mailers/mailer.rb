@@ -26,7 +26,7 @@ class Mailer < ActionMailer::Base
                    'Error-Id'    => @notice.err_id
 
     mail :to      => @app.notification_recipients,
-         :subject => "#{count} #{@app.name} #{@notice.environment_name} #{@notice.class_name} #{error}"
+         :subject => "#{count} #{@app.name} #{@notice.environment_name} #{@notice.try(:class_name)} #{error}"
   end
 
   def comment_notification(comment)
